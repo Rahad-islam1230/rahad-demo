@@ -1375,3 +1375,48 @@ int main() {
 }
 
 
+#include <iostream>
+using namespace std;
+void bobble(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {  
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+void selection(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int mini = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[mini]) {
+                mini = j;
+            }
+        }
+        int temp = arr[i];
+        arr[i] = arr[mini];
+        arr[mini] = temp;
+    }
+}
+void Insert(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+int main() {
+    int n = 5;
+    int arr[n] = {1, 6, 7, 1, -1};
+    bobble(arr, n);
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+}
